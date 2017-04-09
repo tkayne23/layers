@@ -55,8 +55,14 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  aquire:
+    handler: etl.handler.acquire
+
+  process:
+    handler: etl.handler.process
+
+  turk:
+    handler: etl.handler.turk
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
@@ -87,12 +93,12 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
+resources:
+ Resources:
+   NewResource:
+     Type: AWS::S3::Bucket
+     Properties:
+       BucketName: layers-documents
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"

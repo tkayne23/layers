@@ -1,5 +1,6 @@
 const AWS = require('AWS');
 const AquistionManager = require('./aquistion-manager');
+const ImageProcessor = require('./image-processor');
 
 'use strict';
 
@@ -7,11 +8,11 @@ const storage = {
   upload: function(stream, filename) {
     let s3 = new AWS.S3();
     let params = {Bucket: 'layers-documents', Key: filename, Body: stream};
-    
+
     s3.upload(params, function(err, data) {
       console.log(err, data);
     });
-  } 
+  }
 };
 
 module.exports.aquire = (event, context, callback) => {
@@ -43,6 +44,9 @@ module.exports.aquire = (event, context, callback) => {
 };
 
 module.exports.process = (event, context, callback) => {
+  const processor = new ImageProcessor();
+
+  
   const response = {
     statusCode: 200,
     body: JSON.stringify({
