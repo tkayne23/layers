@@ -23,6 +23,7 @@
 ### setup
 1. `cd cloud`
 2. `npm install`
+3. (temp) `cd services/etl && npm install`
 
 
 ##
