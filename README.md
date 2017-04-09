@@ -25,6 +25,9 @@
 2. `npm install`
 3. (temp) `cd services/etl && npm install`
 
+### playing with things (because I didn't finish the config)
+Nick: You can run your scripts the same way to test for now. Just run them from the `etl` folder or wherever you are writing them.
+
 
 ##
 ![gocode-logo](https://cloud.githubusercontent.com/assets/100216/12792545/96727a8e-ca69-11e5-9b9a-cddfa80d1c4b.png)
