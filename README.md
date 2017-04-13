@@ -1,5 +1,5 @@
 # Required
-- Node.js > v5.10
+- Node.js > v6.10
 - npm
 
 # Tools
