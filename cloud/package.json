@@ -1,14 +1,17 @@
 {
   "name": "layers-cloud-deploy",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "author": "Sam Richard",
+  "description": "Global deployment dependencies and utility scripts for Layers' micro-services",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "./scripts/deploy-all.sh",
+    "install": "./scripts/install.sh",
+    "start": "./scripts/start-lambda.sh",
+    "invoke-local": "./scripts/invoke-local.sh"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "serverless": "^1.10.2"
+  "devDependencies": {
+    "serverless": "^1.13.0"
   }
 }
