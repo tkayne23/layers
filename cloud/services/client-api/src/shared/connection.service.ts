@@ -1,18 +1,13 @@
-// If we use TypeORM, this would let us pass the relevant Models without declaring them in the config.
+import { Sequelize, Model } from 'sequelize-typescript';
+import config from '../config';
 
-interface Entity {};
-let typeorm: any;
+export function createConnection(models: Array<typeof Model>, options?: object) {
+  const sequelize = new Sequelize({
+    ...config.db,
+    ...options
+  });
 
-function createConnection(models: Entity[], options) {
-  typeorm.createConnection().then(connection => {
-    connection.addEntities(models);
-    return connection;
-  })
-}
+  sequelize.addModels(models);
 
-function createRepo(model: Entity, options) {
-  typeorm.createConnection().then(connection => {
-    connection.addEntities(model);
-    return connection.getRepository(model);
-  })
+  return sequelize;
 }

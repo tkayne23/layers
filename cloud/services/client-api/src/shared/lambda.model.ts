@@ -1,3 +1,8 @@
+
+export interface Callback {
+  (error?: any, result?: any): void;
+}
+
 export interface Context {
   callbackWaitsForEmptyEventLoop: boolean;
   functionName: string;

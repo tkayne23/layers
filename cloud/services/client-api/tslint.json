@@ -1,3 +1,5 @@
 {
-  "extends": "tslint-config-olo"
+  "extends": [ "tslint-config-olo" ],
+  "rules":{
+    "interface-name": [true, "never-prefix"]
 }
