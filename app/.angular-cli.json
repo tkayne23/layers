@@ -1,11 +1,14 @@
 {
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
     "project": {
-        "version": "1.0.0-beta.20-4",
-        "name": "clarity-seed"
+        "version": "0.0.1-alpha.1",
+        "name": "clearly-angular"
     },
     "apps": [
         {
+            "name": "web",
             "root": "src",
+            "appRoot": "",
             "outDir": "dist",
             "assets": [
                 "images",
@@ -13,8 +16,10 @@
             ],
             "index": "index.html",
             "main": "main.ts",
+            "polyfills": "polyfills.ts",
             "test": "test.ts",
-            "tsconfig": "tsconfig.json",
+            "tsconfig": "tsconfig.app.json",
+            "testTsconfig": "tsconfig.spec.json",
             "prefix": "app",
             "mobile": false,
             "styles": [
@@ -23,7 +28,6 @@
                 "styles.css"
             ],
             "scripts": [
-                "../node_modules/core-js/client/shim.min.js",
                 "../node_modules/mutationobserver-shim/dist/mutationobserver.min.js",
                 "../node_modules/@webcomponents/custom-elements/custom-elements.min.js",
                 "../node_modules/clarity-icons/clarity-icons.min.js",
@@ -40,7 +44,7 @@
     "packages": [],
     "e2e": {
         "protractor": {
-            "config": "./protractor.config.js"
+            "config": "./protractor.conf.js"
         }
     },
     "test": {
@@ -51,6 +55,7 @@
     "defaults": {
         "styleExt": "scss",
         "prefixInterfaces": false,
+        "component": {},
         "inline": {
             "style": false,
             "template": false

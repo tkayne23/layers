@@ -2,11 +2,10 @@
 
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
-import { ClarityModule } from "clarity-angular";
-import { ROUTING } from "./app.routing";
-import { APP_BASE_HREF } from "@angular/common";
+import { ClarityModule } from 'clarity-angular';
+import { CoreModule } from './core/core.module';
+import { ROUTING } from './app.routing';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('AppComponent', () => {
 
@@ -17,11 +16,10 @@ describe('AppComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                AboutComponent,
-                HomeComponent
             ],
             imports: [
                 ClarityModule.forRoot(),
+                CoreModule,
                 ROUTING
             ],
             providers: [{provide: APP_BASE_HREF, useValue: '/'}]
