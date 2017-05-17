@@ -1,17 +1,18 @@
-import { Table, Model, PrimaryKey, Column, AutoIncrement, NotEmpty, IsUUID, Min } from "sequelize-typescript";
+import { Table, Model, PrimaryKey, Column, NotEmpty, IsUUID, Min, DataType } from 'sequelize-typescript';
 
 @Table({
+  schema: 'app',
   timestamps: true
 })
 export class Property extends Model<Property> {
   @PrimaryKey
-  @AutoIncrement
-  @Column
-  id: number;
+  @IsUUID(4)
+  @Column(DataType.UUIDV4)
+  id: string;
 
   @Column
   @IsUUID(4)
-  ownerId: string; //Cognito UUID
+  ownerId: string; // Cognito UUID
 
   @Column
   @NotEmpty
@@ -24,7 +25,7 @@ export class Property extends Model<Property> {
   @Column
   @Min(0)
   netAcreage: number;
-  
+
   @Column
   @Min(0)
   grossAcreage: number;

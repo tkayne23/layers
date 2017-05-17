@@ -1,4 +1,4 @@
-import {Table, Model, PrimaryKey, Column, AutoIncrement} from "sequelize-typescript";
+import { Table, Model, PrimaryKey, Column, AutoIncrement, NotEmpty } from "sequelize-typescript";
 
 @Table
 export class Tract extends Model<Tract> {
@@ -6,4 +6,8 @@ export class Tract extends Model<Tract> {
   @AutoIncrement
   @Column
   id: number;
+
+  @Column
+  @NotEmpty
+  legalDescription: string;
 }

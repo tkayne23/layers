@@ -1,5 +1,7 @@
 {
   "extends": [ "tslint-config-olo" ],
   "rules":{
-    "interface-name": [true, "never-prefix"]
+    "interface-name": [true, "never-prefix"],
+    "no-unused-variable": true
+  }
 }

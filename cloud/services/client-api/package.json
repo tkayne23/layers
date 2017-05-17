@@ -12,13 +12,15 @@
     "aws-sdk": "^2.49.0",
     "pg": "^6.1.5",
     "sequelize": "^4.0.0-2",
-    "sequelize-typescript": "^0.3.0"
+    "sequelize-typescript": "^0.3.0",
+    "uuid": "^3.0.1"
   },
   "devDependencies": {
+    "@types/chai": "^3.5.2",
     "chai": "^3.5.0",
-    "codelyzer": "^3.0.1",
     "mocha": "^3.1.2",
     "reflect-metadata": "^0.1.10",
+    "sequelize-mock": "^0.7.0",
     "serverless": "^1.13.0",
     "serverless-exclude-dev-dependencies": "^1.0.7",
     "serverless-webpack": "git+https://github.com/elastic-coders/serverless-webpack.git",

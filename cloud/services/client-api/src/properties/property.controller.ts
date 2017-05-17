@@ -1,30 +1,40 @@
 import { Promise } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { Property } from './models/property.model';
-import { createConnection } from "../shared/connection.service";
+import { uuid } from 'uuid/v4';
 
 export class PropertyController {
-  connection: Sequelize;
+  constructor(private db: Sequelize, private collection: typeof Property) {}
 
-  constructor(private model: typeof Property) {
-    this.connection = createConnection([model]);
-  }
+  create(body: any, userId: string): Promise<Property> {
+    let property = this.collection.build<Property>({
+      id: uuid(),
+      ...body
+    });
 
-  create(body: any, user: string): Promise<Property> {
-    let property = new this.model(body);
-    property.ownerId = user;
+    property.sections = getSectionsFromLegal(property.legalDescription);
+
+    property.NPV = property.sections.reduce(section => section.NPV);
+
+    property.ownerId = userId;
 
     return property
       .save()
       .then(property => property.toJSON());
   }
 
-  read(id: number, user: string): Promise<Property> {
-    return this.model.findOne({ where: { id: id, ownerId: user }});
+  readAll(userId: string): Promise<Property[]> {
+    return this.collection.findAll<Property>({ where: { ownerId: userId }});
   }
 
-  update(id: number, body: any, user: string): Promise<Property> {
-    return this.model.findOne({ where: { id: id, ownerId: user }})
+  read(id: number, userId: string): Promise<Property> {
+    return this.collection
+      .findOne<Property>({ where: { id: id, ownerId: userId }})
+      .catch(err => { throw new Error(`No Property found for id ${id}`); });
+  }
+
+  update(id: number, body: any, userId: string): Promise<Property> {
+    return this.collection.findOne<Property>({ where: { id: id, ownerId: userId }})
       .then(property => {
         property.set(body);
         // do some processing here
@@ -34,12 +44,12 @@ export class PropertyController {
       .then(property => property.toJSON());
   }
 
-  destroy(id: number, user: string): Promise<Property> {
-    return this.model.findOne({ where: { id: id, ownerId: user }})
+  destroy(id: number, userId: string): Promise<void> {
+    return this.collection.findOne<Property>({ where: { id: id, ownerId: userId }})
       .then(property => {
         // do some cleanup here
 
-        property.destroy();
+        return property.destroy();
       });
   }
 }

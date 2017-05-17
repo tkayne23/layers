@@ -1,3 +1,10 @@
+// TODO: What are the event props that are on every event (http and cloudwatch etc)
+export interface EventPayload {
+  method: string;
+  path: any;
+  claims: any;
+  body: any;
+}
 
 export interface Callback {
   (error?: any, result?: any): void;
@@ -34,3 +41,7 @@ clientContext: {
     };
   };
 };
+
+export function getUserId(event: EventPayload) {
+  return event.claims.sub;
+}

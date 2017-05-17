@@ -1,7 +1,3 @@
+import { EventPayload } from '../../shared/lambda.util';
 
-export interface EventPayload {
-  method: string;
-  path: any;
-  claims: any;
-  body: any;
-}
+export interface PropertyPayload extends EventPayload {}

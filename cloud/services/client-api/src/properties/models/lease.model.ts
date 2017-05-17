@@ -1,4 +1,5 @@
-import {Table, Model, PrimaryKey, Column, AutoIncrement} from "sequelize-typescript";
+import { Table, Model, PrimaryKey, Column, AutoIncrement, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Property } from './property.model';
 
 @Table
 export class Lease extends Model<Lease> {
@@ -6,4 +7,10 @@ export class Lease extends Model<Lease> {
   @AutoIncrement
   @Column
   id: number;
+
+  @ForeignKey(() => Property)
+  propertyId: number;
+
+  @BelongsTo(() => Property)
+  property: Property;
 }
