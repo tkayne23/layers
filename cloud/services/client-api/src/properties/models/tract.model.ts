@@ -1,7 +1,7 @@
-import { Table, Model, PrimaryKey, Column, AutoIncrement, NotEmpty } from "sequelize-typescript";
+import { Table, Model, PrimaryKey, Column, AutoIncrement, NotEmpty } from 'sequelize-typescript';
 
 @Table
-export class Tract extends Model<Tract> {
+export class ProducingTract extends Model<ProducingTract> {
   @PrimaryKey
   @AutoIncrement
   @Column

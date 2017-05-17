@@ -39,7 +39,7 @@ describe('property controller', () => {
       .then(property => {
         expect(property).to.exist;
       })
-      .finally(done);
+      .then(done, done);
     });
   });
 });
