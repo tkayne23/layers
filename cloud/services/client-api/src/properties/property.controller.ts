@@ -12,9 +12,9 @@ export class PropertyController {
       ...body
     });
 
-    property.sections = getSectionsFromLegal(property.legalDescription);
-
-    property.NPV = property.sections.reduce(section => section.NPV);
+    // property.sections = getSectionsFromLegal(property.legalDescription);
+    //
+    // property.NPV = property.sections.reduce(section => section.NPV);
 
     property.ownerId = userId;
 
