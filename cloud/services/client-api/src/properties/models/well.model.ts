@@ -1,4 +1,4 @@
-import { Table, Model, PrimaryKey, Column } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, NotEmpty } from 'sequelize-typescript';
 
 @Table({
   schema: 'app',
@@ -6,21 +6,32 @@ import { Table, Model, PrimaryKey, Column } from 'sequelize-typescript';
 })
 export class Well extends Model<Well> {
   @PrimaryKey
+  api10: string;
 
   @Column
+  @NotEmpty
   name: string;
 
   @Column
+  @NotEmpty
   operator: string;
 
   @Column
+  @NotEmpty
   field: string;
 
   @Column
   status: boolean;
 
   @Column
-  spud_date: date;
+  spud_date: Date;
 
-  
+  @Column
+  lat: number;
+
+  @Column
+  lng: number;
+
+  @Column
+  geometry: Geometry;
 }

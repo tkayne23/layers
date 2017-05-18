@@ -1,4 +1,5 @@
-import { Table, Model, PrimaryKey, Column, NotEmpty, IsUUID, Min, DataType } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, NotEmpty, IsUUID, Min, DataType, ForeignKey } from 'sequelize-typescript';
+import { Deed } from './deed.model';
 
 @Table({
   schema: 'app',
@@ -29,4 +30,13 @@ export class Property extends Model<Property> {
   @Column
   @Min(0)
   grossAcreage: number;
+
+  @Column
+  fractional_ownership: number;
+
+  @Column
+  appraisal: number;
+
+  @ForeignKey(() => Deed)
+  deedId: number;
 }
