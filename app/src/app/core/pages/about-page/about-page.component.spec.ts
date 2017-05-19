@@ -3,14 +3,14 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-import { async, TestBed, ComponentFixture } from "@angular/core/testing";
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 import { ClarityModule } from 'clarity-angular';
-import { HomeComponent } from './home.component';
+import { AboutPageComponent } from './about-page.component';
 
 
-describe('HomeComponent', () => {
+describe('AboutPageComponent', () => {
 
-    let expectedMsg: string = 'This is a Clarity seed application. This is the default page that loads for the application.';
+    const expectedMsg = 'This is a page to help demonstrate routing.';
 
     let fixture: ComponentFixture<any>;
     let compiled: any;
@@ -18,14 +18,14 @@ describe('HomeComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [
-                HomeComponent
+                AboutPageComponent
             ],
             imports: [
                 ClarityModule.forRoot()
             ]
         });
 
-        fixture = TestBed.createComponent(HomeComponent);
+        fixture = TestBed.createComponent(AboutPageComponent);
         fixture.detectChanges();
         compiled = fixture.nativeElement;
 
@@ -35,12 +35,12 @@ describe('HomeComponent', () => {
         fixture.destroy();
     });
 
-    it('should create the home page', async(() => {
+    it('should create the about page', async(() => {
         expect(compiled).toBeTruthy();
     }));
 
     it(`should display: "${expectedMsg}"`, async(() => {
-        expect(compiled.querySelector("p").textContent).toMatch(expectedMsg);
+        expect(compiled.querySelector('p').textContent).toMatch(expectedMsg);
     }));
 
 

@@ -1,27 +1,25 @@
 <clr-main-container>
   <clr-header>
     <div class="branding">
-      <a href="#" class="nav-link">
+      <a href="#" class="nav-link" [routerLink]="[nav.brandItem.path]">
         <span class="clr-icon clr-clarity-logo"></span>
-        <span class="title">Clarity</span>
+        <span class="title">{{ nav.brandItem.label }}</span>
       </a>
     </div>
-    <form class="search">
+    <form class="search" *ngIf="nav.hasSearch">
       <label for="search_input">
         <input id="search_input" type="text" placeholder="Search for Components...">
       </label>
     </form>
-    <div class="header-actions">
+    <div class="header-actions" *ngFor="let navItem of nav.actionCollection">
+      {{ navItem.label }}
     </div>
   </clr-header>
-  <nav class="sub-nav" [clr-nav-level]="1">
+  <nav class="sub-nav" [clr-nav-level]="1" *ngIf="nav.navCollection.length > 0">
     <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/home']"
-           [class.active]="router.url==='/home' || router.url==='/'">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/about']" [class.active]="router.url==='/about'">About</a>
+      <li class="nav-item" *ngFor="let navItem of nav.navCollection">
+        <a class="nav-link" href="#" [routerLink]="[navItem.path]"
+           [class.active]="router.url===navItem.path">{{navItem.label}}</a>
       </li>
     </ul>
   </nav>

@@ -6,3 +6,18 @@
     background-image: url(../images/clarity_logo.svg);
   }
 }
+
+.main-container {
+  animation: app-entrance 1s; 
+}
+
+@keyframes app-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

@@ -1,25 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ClarityModule } from 'clarity-angular';
+import { StoreModule } from '@ngrx/store';
+
+import { environment } from './../environments/environment';
+
 import { AppComponent } from './app.component';
-import { ROUTING } from "./app.routing";
-import { HomeComponent } from "./home/home.component";
-import { AboutComponent } from "./about/about.component";
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
     declarations: [
         AppComponent,
-        AboutComponent,
-        HomeComponent
     ],
     imports: [
         BrowserModule,
-        FormsModule,
-        HttpModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
         ClarityModule.forRoot(),
-        ROUTING
+        CoreModule.forRoot(),
+        AuthModule.forRoot(environment.basicAuthConfig)
     ],
     providers: [],
     bootstrap: [AppComponent]

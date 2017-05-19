@@ -13,8 +13,6 @@ export class PropertyController {
     });
 
     // property.sections = getSectionsFromLegal(property.legalDescription);
-    //
-    // property.NPV = property.sections.reduce(section => section.NPV);
 
     property.ownerId = userId;
 
@@ -38,6 +36,9 @@ export class PropertyController {
       .then(property => {
         property.set(body);
         // do some processing here
+        // if (property.lastAppraisal - Date.now() > 7 days) { // use moment.js or something for this
+        //  property.NPV = property.sections.reduce(section => section.NPV);
+        // }
 
         return property.save();
       })

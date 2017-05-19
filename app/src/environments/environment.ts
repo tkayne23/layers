@@ -4,5 +4,11 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  basicAuthConfig: {
+    SIGNIN_URL: '/api/auth/signin',
+    SIGNUP_URL: '/api/auth/signup',
+    FORGOT_URL: '/api/auth/forgot',
+    RESET_URL: '/api/auth/reset'
+  }
 };
