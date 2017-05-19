@@ -1,4 +1,4 @@
-import { Table, Model, PrimaryKey, Column, NotEmpty } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, NotEmpty, DataType } from 'sequelize-typescript';
 
 @Table({
   schema: 'app',
@@ -32,6 +32,6 @@ export class Well extends Model<Well> {
   @Column
   lng: number;
 
-  @Column
-  geometry: Geometry;
+  @Column(DataType.GEOMETRY) // Geometry is the __column__ type
+  geometry; // I have no idea what type this is
 }
