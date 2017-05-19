@@ -1,4 +1,4 @@
-import { Table, Model, PrimaryKey, Column, IsUUID, DataType } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey } from 'sequelize-typescript';
 import { Lease } from './lease.model';
 import { Property } from './property.model';
 import { DivisionOrder } from './division_order.model';
