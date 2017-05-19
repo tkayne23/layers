@@ -5,4 +5,5 @@ export interface NavItemConfig {
   type: NavItemType;
   icon?: string;
   class?: string;
+  private?: boolean | string;
 }

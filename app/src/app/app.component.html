@@ -1,31 +1,12 @@
 <clr-main-container>
-  <clr-header>
-    <div class="branding">
-      <a href="#" class="nav-link" [routerLink]="[nav.brandItem.path]">
-        <span class="clr-icon clr-clarity-logo"></span>
-        <span class="title">{{ nav.brandItem.label }}</span>
-      </a>
+  <div class="content-container row">
+    <div class="col-2 p-0">
+      <lys-sidebar></lys-sidebar>
     </div>
-    <form class="search" *ngIf="nav.hasSearch">
-      <label for="search_input">
-        <input id="search_input" type="text" placeholder="Search for Components...">
-      </label>
-    </form>
-    <div class="header-actions" *ngFor="let navItem of nav.actionCollection">
-      {{ navItem.label }}
-    </div>
-  </clr-header>
-  <nav class="sub-nav" [clr-nav-level]="1" *ngIf="nav.navCollection.length > 0">
-    <ul class="nav">
-      <li class="nav-item" *ngFor="let navItem of nav.navCollection">
-        <a class="nav-link" href="#" [routerLink]="[navItem.path]"
-           [class.active]="router.url===navItem.path">{{navItem.label}}</a>
-      </li>
-    </ul>
-  </nav>
-  <div class="content-container">
-    <div class="content-area">
-      <router-outlet></router-outlet>
+    <div class="col-10 p-0">
+      <div class="content-area">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </clr-main-container>

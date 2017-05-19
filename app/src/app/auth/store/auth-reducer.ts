@@ -1,4 +1,4 @@
-import { AuthStatus } from './../shared/auth-status.enum';
+import { AuthStatus } from '../shared/auth-status.enum';
 import { Action, State } from '@ngrx/store';
 import { User } from '../shared/user.model';
 import { Actions, LOGIN, LoginAction, LOGIN_SUCCESS } from './auth-actions';
@@ -14,6 +14,8 @@ export const initialState: AuthState = {
   state: AuthStatus.LOGGED_OUT,
   isLoading: false
 };
+
+export const getLoggedIn = state => state.state === AuthStatus.LOGGED_IN;
 
 export function reducer(state: AuthState = initialState, action: Actions): AuthState {
   switch (action.type) {

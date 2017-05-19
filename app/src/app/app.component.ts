@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 
 @Component({
-    selector: 'app-component',
+    selector: 'lys-app-component',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })

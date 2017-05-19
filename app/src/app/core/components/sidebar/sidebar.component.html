@@ -1,0 +1,32 @@
+<nav class="sidebar">
+  <div class="branding">
+      <a href="javascript://" class="brand-link" [routerLink]="[nav.brandItem.path]">
+        <span class="logo"></span>
+        <span class="h3">Layers</span>
+      </a>
+  </div>
+  <ng-container *ngIf="auth$ | async; let auth; else loading">
+    <ng-container *ngIf="auth.user; else loggedOut">
+      <ul class="sidebar-nav nav nav-pills flex-column">
+        <li class="nav-item" *ngFor="let navItem of nav.privateNavCollection">
+          <a href="javascript://" [routerLink]="navItem.path" routerLinkActive="active" class="nav-link">
+            <clr-icon *ngIf="navItem.icon" [attr.shape]="navItem.icon"></clr-icon> {{navItem.label}}
+          </a>
+        </li>
+      </ul>
+      <div class="footer">
+        <!--<lys-user-menu></lys-user-menu>-->
+      </div>
+    </ng-container>
+    <ng-template #loggedOut>
+      <ul class="sidebar-nav nav nav-pills flex-column">
+        <li class="nav-item" *ngFor="let navItem of nav.publicNavCollection">
+          <a href="javascript://" [routerLink]="navItem.path" routerLinkActive="active" class="nav-link">
+            <clr-icon *ngIf="navItem.icon" [attr.shape]="navItem.icon"></clr-icon> {{navItem.label}}
+          </a>
+        </li>
+      </ul>
+    </ng-template>
+  </ng-container>
+  <ng-template #loading>Loading...</ng-template>
+</nav>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="231px" viewBox="0 0 200 231" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.2 (39069) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Layers-Logo-Icon-White" transform="translate(-48.000000, -332.000000)" fill-rule="nonzero" fill="#161616">
+            <g id="Icon" transform="translate(48.000000, 332.000000)">
+                <g id="Group">
+                    <path d="M0.898,33.386 L0.898,148.16 C0.898,164.49 15.099,172.754 15.099,172.754 L114.495,230.143 L157.096,205.547 L57.699,148.16 C57.699,148.16 43.498,139.894 43.498,123.564 L43.498,8.792 L0.898,33.386 Z" id="Shape"></path>
+                    <path d="M114.496,0.593 L71.897,25.187 L71.897,107.17 C71.897,123.5 86.098,131.764 86.098,131.764 L86.097,131.764 L157.096,172.754 L199.696,148.16 L128.695,107.169 L128.699,107.17 C128.699,107.17 114.497,98.906 114.497,82.574 L114.496,82.574 L114.496,0.593 L114.496,0.593 Z" id="Shape"></path>
+                    <path d="M185.494,41.583 L142.894,16.988 L142.894,66.177 L142.894,66.178 C142.894,82.508 157.096,90.773 157.096,90.773 L157.098,90.772 L199.696,115.369 L199.697,66.176 L199.695,66.18 C199.695,49.849 185.494,41.584 185.494,41.583 L185.494,41.583 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

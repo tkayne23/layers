@@ -1,5 +1,5 @@
 import { NgModule, InjectionToken } from '@angular/core';
-import { routerReducer, RouterStoreModule } from '@ngrx/router-store';
+import { routerReducer, RouterState, RouterStoreModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'environments/environment';
 import { Action, combineReducers, StoreModule, INITIAL_REDUCER } from '@ngrx/store';
@@ -33,6 +33,11 @@ function rootReducerFactory(providers: ReducerProvider<any>[]) {
 export const REDUCERS = {
   router: routerReducer
 };
+
+export interface CoreState {
+  router: RouterState;
+  [key: string]: any;
+}
 
 @NgModule({
   imports: [
