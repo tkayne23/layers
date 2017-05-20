@@ -10,6 +10,8 @@ We used AWS Cognito to get a complete managed authentication system.
 
 Our ETL and database scripting took longer than expected, and we were not able to connect the api for this build.
 
+LIVE URL: layers.us.s3-website-us-west-2.amazonaws.com
+
 # Required
 - Node.js > v6.10
 - npm
