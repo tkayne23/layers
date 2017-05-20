@@ -15,7 +15,7 @@ describe('hello function', () => {
     hello(requestEvent, {}, (err, result) => {
       expect(err).to.be.undefined;
       expect(result.event).to.equal(requestEvent);
-      expect(result.message).to.equal(`Hello bar! Thanks for the GET request!`);
+      expect(result.message).to.equal('Hello bar! Thanks for the GET request!');
 
       done();
     });

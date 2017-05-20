@@ -1,16 +1,29 @@
-import { Table, Model, PrimaryKey, Column, AutoIncrement, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
 import { Property } from './property.model';
+import { ProducingTract } from './producing_tract.model';
 
-@Table
+@Table({
+  timestamps: true
+})
 export class Lease extends Model<Lease> {
   @PrimaryKey
-  @AutoIncrement
-  @Column
-  id: number;
+  @IsUUID(4)
+  @Column(DataType.UUIDV4)
+  id: string;
 
   @ForeignKey(() => Property)
-  propertyId: number;
+  @Column(DataType.UUIDV4)
+  propertyId: string;
+
+  @Column
+  document: string;
+
+  @Column
+  royaltyRate: number;
 
   @BelongsTo(() => Property)
   property: Property;
+
+  @HasMany(() => ProducingTract)
+  producingTracts: ProducingTract[];
 }

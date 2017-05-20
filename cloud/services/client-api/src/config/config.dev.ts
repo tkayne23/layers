@@ -1,6 +1,6 @@
 export default {
     db: {
-        dbname: 'main',
+        dbname: 'layers',
         dialect: 'postgres',
         host: 'localhost',
         username: 'root',
