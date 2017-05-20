@@ -2,7 +2,10 @@ import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from '
 import { User } from './user.model';
 import { Property } from './property.model';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class Offer extends Model<Offer> {
   @PrimaryKey
   @IsUUID(4)

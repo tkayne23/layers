@@ -1,7 +1,10 @@
 import { Table, Model, PrimaryKey, Column, AutoIncrement, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { Property } from './property.model';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class Lease extends Model<Lease> {
   @PrimaryKey
   @AutoIncrement

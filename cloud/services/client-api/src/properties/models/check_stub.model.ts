@@ -1,7 +1,10 @@
 import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from 'sequelize-typescript';
 import { ProducingTract } from './producing_tract.model';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class CheckStub extends Model<CheckStub> {
   @PrimaryKey
   @IsUUID(4)

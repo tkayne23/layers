@@ -1,6 +1,9 @@
 import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from 'sequelize-typescript';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class User extends Model<User> {
   @PrimaryKey
   @IsUUID(4)

@@ -1,6 +1,9 @@
 import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from 'sequelize-typescript';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class DivisionOrder extends Model<DivisionOrder> {
   @PrimaryKey
   @IsUUID(4)

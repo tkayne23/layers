@@ -4,7 +4,10 @@ import { Property } from './property.model';
 import { DivisionOrder } from './division_order.model';
 import { DSU } from './dsu.model';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class ProducingTract extends Model<ProducingTract> {
   @PrimaryKey
   @IsUUID(4)

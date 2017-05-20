@@ -1,8 +1,11 @@
 import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey } from 'sequelize-typescript';
-import { Property } from './property.model';
+import { Property } from '../../properties/models/property.model';
 import { Well } from './well.model';
 
-@Table
+@Table({
+  schema: 'app',
+  timestamps: true
+})
 export class WellsInProperty extends Model<WellsInProperty> {
   @PrimaryKey
   @IsUUID(4)

@@ -1,4 +1,4 @@
-import { Table, Model, PrimaryKey, Column, NotEmpty, DataType } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType } from 'sequelize-typescript';
 
 @Table({
   schema: 'app',
@@ -6,22 +6,24 @@ import { Table, Model, PrimaryKey, Column, NotEmpty, DataType } from 'sequelize-
 })
 export class Well extends Model<Well> {
   @PrimaryKey
+  @IsUUID(4)
+  @Column(DataType.UUIDV4)
+  id: string;
+
+  @Column
   api10: string;
 
   @Column
-  @NotEmpty
-  name: string;
+  well_name: string;
 
   @Column
-  @NotEmpty
   operator: string;
 
   @Column
-  @NotEmpty
   field: string;
 
   @Column
-  status: boolean;
+  status: string;
 
   @Column
   spud_date: Date;
@@ -33,5 +35,5 @@ export class Well extends Model<Well> {
   lng: number;
 
   @Column(DataType.GEOMETRY) // Geometry is the __column__ type
-  geometry; // I have no idea what type this is
+  geometry: any; // I have no idea what type this is
 }
