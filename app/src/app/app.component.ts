@@ -1,7 +1,6 @@
 import { NavService } from './core/shared/nav.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'lys-app-component',
@@ -9,6 +8,5 @@ import { Store } from '@ngrx/store';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    constructor(private router: Router, private nav: NavService) {
-    }
+    constructor() {}
 }

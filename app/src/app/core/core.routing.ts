@@ -5,7 +5,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavItemType } from './shared';
 
 export const CoreRoutes: Routes = [
-    {path: 'home', component: HomePageComponent, data: { navItem: { type: NavItemType.NAV, label: 'Ledger', private: true}}},
     {path: 'about', component: AboutPageComponent, data: { navItem: { type: NavItemType.NAV, label: 'About', private: true}}}
 ];
 

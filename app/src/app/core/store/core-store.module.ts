@@ -12,7 +12,7 @@ export interface ReducerProvider<T> {
 
 export const REDUCER_PROVIDER = new InjectionToken<ReducerProvider<any>>('core.ReducerProvider');
 
-function rootReducerFactory(providers: ReducerProvider<any>[]) {
+export function rootReducerFactory(providers: ReducerProvider<any>[]) {
   const reducers = {};
 
   for (const provider of providers) {
@@ -23,11 +23,11 @@ function rootReducerFactory(providers: ReducerProvider<any>[]) {
     }
   }
 
-  if (environment.production) {
+  // if (environment.production) {
     return combineReducers(reducers);
-  } else {
-    return storeFreeze(combineReducers(reducers));
-  }
+  // } else {
+    // return storeFreeze(combineReducers(reducers));
+  // }
 }
 
 export const REDUCERS = {

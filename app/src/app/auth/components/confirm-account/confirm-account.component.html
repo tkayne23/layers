@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+  <form #confirmForm="ngForm" (ngSubmit)="onConfirm()" class="login">
+      <label class="title">
+          Confirm Your Account
+      </label>
+      <div class="login-group">
+          <ng-container *ngIf="!(user$ | async)">
+              <label for="username">Username</label>
+          <label for="username"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+                <input type="text" id="username" placeholder="Enter username"
+                    required
+                    name="username"
+                    class="username"
+                    [(ngModel)]="username"
+                    #usernameInput="ngModel">
+                <span class="tooltip-content">
+                    A username is required
+                </span>
+            </label>
+          </ng-container>
+          <label for="confirmationCode">Confirmation Code</label>
+          <label for="confirmationCode"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="confirmationCodeInput.invalid && (confirmationCodeInput.dirty || confirmationCodeInput.touched)">
+                <input type="text" id="confirmationCode" placeholder="Enter confirmationCode"
+                    required
+                    name="confirmationCode"
+                    class="confirmationCode"
+                    [(ngModel)]="confirmationCode"
+                    #confirmationCodeInput="ngModel">
+                <span class="tooltip-content">
+                    A confirmation code is required
+                </span>
+            </label>
+          <button [disabled]="confirmForm.form.invalid" type="submit" class="btn btn-primary">
+              <span *ngIf="isLoading$ | async" class="spinner spinner-inline"></span>
+              Confirm
+            </button>
+            <div *ngIf="error$ | async; let error" class="error active">
+              Error {{error}}
+          </div>
+      </div>
+  </form>
+</div>

@@ -1,3 +1,4 @@
+import { getLoggedIn } from 'app/auth/store/auth-reducer';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AuthState } from 'app/auth/store/auth-reducer';
@@ -18,6 +19,10 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  loggedIn(auth) {
+    return getLoggedIn(auth);
   }
 
 }

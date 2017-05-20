@@ -1,28 +1,32 @@
+import { AuthRequestService } from './shared/auth-request.service';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { EffectsModule } from '@ngrx/effects';
-import { AuthStoreModule } from './store';
-import { BasicAuthConfig } from './shared/basic-auth.service';
+import { SharedModule } from 'app/shared/shared.module';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
-import { RouterModule } from '@angular/router';
+import { CognitoAuthService, CognitoConfig } from './shared/cognito/cognito-auth.service';
+import { AuthStoreModule } from './store';
+import { ConfirmAccountComponent } from './components/confirm-account/confirm-account.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     HttpModule,
-    RouterModule,
     AuthStoreModule,
   ],
-  declarations: [LoginComponent, SignupComponent],
+  declarations: [LoginComponent, SignupComponent, ConfirmAccountComponent, LogoutComponent],
 })
 export class AuthModule {
-  static forRoot(config: BasicAuthConfig): ModuleWithProviders {
+  static forRoot(config: CognitoConfig): ModuleWithProviders {
     return {
       ngModule: AuthModule,
       providers: [
-        {provide: BasicAuthConfig, useValue: config },
+        CognitoAuthService,
+        AuthRequestService,
+        {provide: CognitoConfig, useValue: config },
       ]
     };
   }

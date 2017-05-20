@@ -1,23 +1,65 @@
-<div class="login-wrapper card">
-  <form class="login">
+<div class="login-wrapper">
+  <form #signupForm="ngForm" (ngSubmit)="onSignup()" class="login">
       <label class="title">
-          Layers<span class="trademark">&#8482;</span>
-          Primo McAwesome Account&#174;
+          Get Started With a Layers Portfolio for Free
       </label>
       <div class="login-group">
-          <input class="username" type="text" id="login_username" placeholder="Username">
-          <input class="password" type="password" id="login_password" placeholder="Password">
-          <div class="checkbox">
-              <input type="checkbox" id="rememberme">
-              <label for="rememberme">
-                  Remember me
-              </label>
+          <label for="username">Username</label>
+          <label for="username"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+                <input type="text" id="username" placeholder="Enter Username"
+                    required
+                    name="username"
+                    class="username"
+                    [(ngModel)]="details.username"
+                    #usernameInput="ngModel">
+                <span class="tooltip-content">
+                    Username is Required.
+                </span>
+            </label>
+            <label for="username">Email</label>
+          <label for="email"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="emailInput.invalid && (emailInput.dirty || emailInput.touched)">
+                <input type="email" id="email" placeholder="Enter email"
+                    required
+                    name="email"
+                    class="username"
+                    [(ngModel)]="details.attributes.email"
+                    #emailInput="ngModel">
+                <span class="tooltip-content">
+                    A Valid Email Address is Required.
+                </span>
+            </label>
+          <label for="password">password</label>
+          <label for="password"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+                <input type="password" id="password" placeholder="Enter password"
+                    required
+                    name="password"
+                    class="password"
+                    [(ngModel)]="details.password"
+                    #passwordInput="ngModel">
+                <span class="tooltip-content">
+                    A Password is Required.
+                </span>
+            </label>
+          <button [disabled]="signupForm.form.invalid" type="submit" class="btn btn-primary">
+              <span *ngIf="isLoading$ | async" class="spinner spinner-inline"></span>
+              Sign Up
+            </button>
+            <div *ngIf="error$ | async; let error" class="error active">
+              Error {{error}}
           </div>
-          <div class="error active">
-              Invalid user name or password
-          </div>
-          <button type="submit" class="btn btn-primary">Sign Up</button>
-          <a routerLink="../login" class="signup">Already have an account?</a>
+          <a routerLink="../../login" class="signup">Already have an account?</a>
       </div>
   </form>
 </div>
