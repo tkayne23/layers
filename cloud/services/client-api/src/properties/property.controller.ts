@@ -1,7 +1,8 @@
 import { Promise } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { Property } from './models/property.model';
-import { uuid } from 'uuid/v4'; 
+import { uuid } from 'uuid/v4';
+import { LocationController } from '../locations/location.controller.ts';
 
 export class PropertyController {
   constructor(private db: Sequelize, private collection: typeof Property) {}
@@ -12,7 +13,7 @@ export class PropertyController {
       ...body
     });
 
-    // property.sections = getSectionsFromLegal(property.legalDescription);
+    property.sections = LocationController.getSectionsFromLegal(property.legalDescription);
 
     property.ownerId = userId;
 
