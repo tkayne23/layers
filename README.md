@@ -2,7 +2,9 @@
 
 This project contains an Angular 4 frontend under the `/app/` directory and a Serverless Framework backend project under `/cloud/`
 
-The frontend uses the latest Angular version. We used @ngrx, a redux clone, to manage state. This lets us handle actions and state changes in a reliable manner. We used Chart.js to draw charts, but they broke with the mock data I shoved in last second.
+The frontend uses the latest Angular version. We used @ngrx, a redux clone, to manage state. This lets us handle actions and state changes in a reliable manner. We used Chart.js to draw charts, but because our backend was still migrating, I added mock data that broke the library.
+
+We created surveys using (survey.js)[http://surveyjs.org/] and need to integrate those surveys with the application once the dashboard is working.
 
 The backend runs on AWS Lambdas, meaning it can scale quickly and for very little cost. 
 
