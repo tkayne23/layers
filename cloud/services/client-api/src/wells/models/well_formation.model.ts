@@ -1,8 +1,7 @@
-import { Table, Model, Column, PrimaryKey, ForeignKey, IsUUID, DataType  } from 'sequelize-typescript';
+import { Table, Model, Column, PrimaryKey, ForeignKey, IsUUID, DataType, BelongsTo  } from 'sequelize-typescript';
 import { Well } from './well.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 
@@ -13,9 +12,12 @@ export class WellFormation extends Model<WellFormation> {
   id: string;
 
   @ForeignKey(() => Well)
-  id_well: number;
+  @Column(DataType.UUIDV4)
+  id_well: string;
 
-  @PrimaryKey
+  @BelongsTo(() => Well)
+  well: Well;
+
   @Column
   api12: string;
 

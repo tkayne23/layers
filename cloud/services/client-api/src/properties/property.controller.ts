@@ -1,7 +1,7 @@
 import { Promise } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { Property } from './models/property.model';
-import { uuid } from 'uuid/v4';
+import { uuid } from 'uuid/v4'; 
 
 export class PropertyController {
   constructor(private db: Sequelize, private collection: typeof Property) {}

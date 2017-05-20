@@ -1,16 +1,18 @@
-import { Table, Model, ForeignKey } from 'sequelize-typescript';
+import { Table, Model, ForeignKey, PrimaryKey, DataType, Column } from 'sequelize-typescript';
 import { Well } from './well.model';
 import { Section } from './section.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class WellSection extends Model<WellSection> {
-
+  @PrimaryKey
   @ForeignKey(() => Well)
-  id_well: number;
+  @Column(DataType.UUIDV4)
+  id_well: string;
 
+  @PrimaryKey
   @ForeignKey(() => Section)
-  id_section: number;
+  @Column(DataType.UUIDV4)
+  id_section: string;
 }

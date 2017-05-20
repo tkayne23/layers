@@ -1,8 +1,7 @@
-import { Table, Model, PrimaryKey, Column, ForeignKey } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, ForeignKey, DataType } from 'sequelize-typescript';
 import { WellFormation } from './well_formation.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 
@@ -12,8 +11,8 @@ export class ProductionActual extends Model<ProductionActual> {
   date: Date;
 
   @PrimaryKey
-  @Column
   @ForeignKey(() => WellFormation)
+  @Column(DataType.UUIDV4)
   id_well_formation: number;
 
   @Column

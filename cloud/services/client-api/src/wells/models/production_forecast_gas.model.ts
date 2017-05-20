@@ -2,13 +2,13 @@ import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from '
 import { WellFormation } from './well_formation.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class ProductionForecastGas extends Model<ProductionForecastGas> {
   @PrimaryKey
   @ForeignKey(() => WellFormation)
-  well_formation_id: number;
+  @Column(DataType.UUIDV4)
+  id_well_formation: string;
 
   @PrimaryKey
   @Column
@@ -22,7 +22,4 @@ export class ProductionForecastGas extends Model<ProductionForecastGas> {
 
   @Column
   gas_forecast: number;
-
-  @Column
-  nymex_gas: number;
 }

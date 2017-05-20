@@ -2,7 +2,7 @@
 export interface EventPayload {
   method?: string;
   path?: any;
-  claims?: any;
+  cognitoPoolClaims?: any;
   body?: any;
 }
 
@@ -43,5 +43,5 @@ export interface Context {
 };
 
 export function getUserId(event: EventPayload) {
-  return event.claims.sub;
+  return event.cognitoPoolClaims.sub;
 }

@@ -1,8 +1,9 @@
-import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey, BelongsToMany } from 'sequelize-typescript';
 import { Township } from './township.model';
+import { Property } from '../../properties/models/property.model';
+import { SectionsInProperty } from '../../properties/models/sections_in_property.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class Section extends Model<Section> {
@@ -12,8 +13,21 @@ export class Section extends Model<Section> {
   id: string;
 
   @Column
-  section: number;
+  sec: string;
+
+  @Column
+  cnty_name: string;
+
+  @Column
+  
 
   @ForeignKey(() => Township)
-  id_township: number;
+  @Column(DataType.UUIDV4)
+  id_township: string;
+
+  @BelongsTo(() => Township)
+  township: Township
+
+  @BelongsToMany(() => Property, () => SectionsInProperty)
+  properties: Property[];
 }

@@ -1,8 +1,7 @@
-import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from 'sequelize-typescript';
-import { Range } from './range.model';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, HasMany } from 'sequelize-typescript';
+import { Section } from './section.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class Township extends Model<Township> {
@@ -12,8 +11,23 @@ export class Township extends Model<Township> {
   id: string;
 
   @Column
-  township: string;
+  twn: string;
 
-  @ForeignKey(() => Range)
-  id_range: number;
+  @Column
+  rng: string;
+
+  @Column
+  tdir: string;
+
+  @Column
+  rdir: string;
+
+  @Column
+  prim_code: string;
+
+  @Column
+  geom: any;
+
+  @HasMany(() => Section)
+  sections: Section[];
 }

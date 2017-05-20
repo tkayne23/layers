@@ -1,4 +1,4 @@
-import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType, BelongsTo } from 'sequelize-typescript';
 import { ProducingTract } from './producing_tract.model';
 
 @Table({
@@ -24,5 +24,9 @@ export class CheckStub extends Model<CheckStub> {
   tracts: string;
 
   @ForeignKey(() => ProducingTract)
-  producingTractId: number;
+  @Column(DataType.UUIDV4)
+  producingTractId: string;
+
+  @BelongsTo(() => ProducingTract)
+  producingTract: ProducingTract;
 }

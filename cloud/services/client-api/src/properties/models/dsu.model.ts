@@ -1,8 +1,7 @@
-import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, ForeignKey, IsUUID, DataType, HasMany } from 'sequelize-typescript';
 import { Well } from '../../wells/models/well.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class DSU extends Model<DSU> {
@@ -12,11 +11,11 @@ export class DSU extends Model<DSU> {
   id: string;
 
   @Column
-  legal_description: string;
+  legalDescription: string;
 
   @Column
   polygon: string;
 
-  @ForeignKey(() => Well)
-  api10_Well: number;
+  @HasMany(() => Well)
+  wells: Well[];
 }

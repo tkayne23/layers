@@ -13,10 +13,12 @@ export class SectionsInProperty extends Model<SectionsInProperty> {
   id: string;
 
   @ForeignKey(() => Property)
-  propertyId: number;
+  @Column(DataType.UUIDV4)
+  propertyId: string;
 
   @ForeignKey(() => Section)
-  sectionId: number;
+  @Column(DataType.UUIDV4)
+  sectionId: string;
 
   @Column
   fractional_overlap: number;

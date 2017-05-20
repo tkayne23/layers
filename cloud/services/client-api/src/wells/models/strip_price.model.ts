@@ -1,7 +1,6 @@
 import { Table, Model, PrimaryKey, Column } from 'sequelize-typescript';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class StripPrice extends Model<StripPrice> {

@@ -1,14 +1,14 @@
-import { Table, Model, PrimaryKey, Column, ForeignKey } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, ForeignKey, DataType } from 'sequelize-typescript';
 import { WellFormation } from './well_formation.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class ProductionForecastOil extends Model<ProductionForecastOil> {
   @PrimaryKey
   @ForeignKey(() => WellFormation)
-  id_well_formation: number;
+  @Column(DataType.UUIDV4)
+  id_well_formation: string;
 
   @PrimaryKey
   @Column
@@ -22,7 +22,4 @@ export class ProductionForecastOil extends Model<ProductionForecastOil> {
 
   @Column
   oil_forecast: number;
-
-  @Column
-  nymex_oil: number;
 }

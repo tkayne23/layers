@@ -1,7 +1,6 @@
-import { Table, Model, PrimaryKey, Column, IsUUID, DataType } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey } from 'sequelize-typescript';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class Well extends Model<Well> {
@@ -26,14 +25,15 @@ export class Well extends Model<Well> {
   status: string;
 
   @Column
-  spud_date: Date;
-
-  @Column
   lat: number;
 
   @Column
   lng: number;
 
   @Column(DataType.GEOMETRY) // Geometry is the __column__ type
-  geometry: any; // I have no idea what type this is
+  geom: any; // I have no idea what type this is
+
+  @ForeignKey(() => DSU)
+  @Column(DataType.UUIDV4)
+  id_dsu: string;
 }

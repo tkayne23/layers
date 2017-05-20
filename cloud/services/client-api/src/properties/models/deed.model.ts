@@ -1,5 +1,5 @@
-import { Table, Model, PrimaryKey, Column, IsUUID, DataType } from 'sequelize-typescript';
-// import { Property } from './property.model';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey, BelongsTo } from 'sequelize-typescript';
+import { Property } from './property.model';
 
 @Table({
   schema: 'app',
@@ -12,14 +12,21 @@ export class Deed extends Model<Deed> {
   id: string;
 
   @Column
-  document: any;
+  document: string;
 
   @Column
-  fractional_ownership: number;
+  fractionalOwnership: number;
 
   @Column
-  legal_desc: string;
+  legalDescription: string;
 
   @Column
-  gross_acreage: number;
+  grossAcreage: number;
+
+  @ForeignKey(() => Property)
+  @Column(DataType.UUIDV4)
+  peopertyId: string;
+
+  @BelongsTo(() => Property)
+  property: Property;
 }

@@ -1,11 +1,11 @@
-import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey } from 'sequelize-typescript';
+import { Table, Model, PrimaryKey, Column, IsUUID, DataType, ForeignKey, HasOne, HasMany, BelongsTo } from 'sequelize-typescript';
 import { Lease } from './lease.model';
 import { Property } from './property.model';
 import { DivisionOrder } from './division_order.model';
 import { DSU } from './dsu.model';
+import { CheckStub } from './check_stub.model';
 
 @Table({
-  schema: 'app',
   timestamps: true
 })
 export class ProducingTract extends Model<ProducingTract> {
@@ -15,14 +15,29 @@ export class ProducingTract extends Model<ProducingTract> {
   id: string;
 
   @ForeignKey(() => Lease)
-  leaseId: number;
+  @Column(DataType.UUIDV4)
+  leaseId: string;
 
   @ForeignKey(() => Property)
-  propertyId: number;
-
-  @ForeignKey(() => DivisionOrder)
-  divisionOrderId: number;
+  @Column(DataType.UUIDV4)
+  propertyId: string;
 
   @ForeignKey(() => DSU)
-  dsuId: number;
+  @Column(DataType.UUIDV4)
+  dsuId: string;
+
+  @HasOne(() => DivisionOrder)
+  divisionOrder: DivisionOrder;
+
+  @HasMany(() => CheckStub)
+  checkStubs: CheckStub[];
+
+  @BelongsTo(() => DSU)
+  dsu: DSU;
+
+  @BelongsTo(() => Property)
+  property: Property;
+
+  @BelongsTo(() => Lease)
+  lease: Lease;
 }
