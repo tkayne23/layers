@@ -1,3 +1,15 @@
+## GoCode Docs
+
+This project contains an Angular 4 frontend under the `/app/` directory and a Serverless Framework backend project under `/cloud/`
+
+The frontend uses the latest Angular version. We used @ngrx, a redux clone, to manage state. This lets us handle actions and state changes in a reliable manner. We used Chart.js to draw charts, but they broke with the mock data I shoved in last second.
+
+The backend runs on AWS Lambdas, meaning it can scale quickly and for very little cost. 
+
+We used AWS Cognito to get a complete managed authentication system.
+
+Our ETL and database scripting took longer than expected, and we were not able to connect the api for this build.
+
 # Required
 - Node.js > v6.10
 - npm
@@ -23,10 +35,10 @@
 ### setup
 1. `cd cloud`
 2. `npm install`
-3. (temp) `cd services/etl && npm install`
 
-### playing with things (because I didn't finish the config)
-Nick: You can run your scripts the same way to test for now. Just run them from the `etl` folder or wherever you are writing them.
+### running locally
+1. `cd services/client-api`
+2. `sls webpack serve`
 
 
 ##

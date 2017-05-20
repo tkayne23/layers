@@ -1,36 +1,11 @@
 # layers
-### the platform for the mineral rights market
+
 
 Getting started
 ----------------------------------
-This project was started from a seed with:
-
-- Angular 2 application with:
-    - [angular/router](https://github.com/angular/angular) - Angular Router
-    - [clarity-icons](https://www.npmjs.com/package/clarity-icons)
-    - [clarity-ui](https://www.npmjs.com/package/clarity-ui)
-    - [clarity-angular](https://www.npmjs.com/package/clarity-angular)
-    - [ngrx/store](https://github.com/ngrx/store) - RxJS powered state management for Angular apps, inspired by Redux
-    - [ngrx/effects](https://github.com/ngrx/effects) - Side effect model for @ngrx/store
-    - [ngrx/router-store](https://github.com/ngrx/router-store) - Bindings to connect angular/router to @ngrx/store
-    - [ngrx/store-devtools](https://github.com/ngrx/store-devtools) - Instrumentation for @ngrx/store enabling time-travel debugging
-    - [codewareio/ngrx-store-freeze](https://github.com/codewareio/ngrx-store-freeze) - A @ngrx/store meta reducer that prevents state from being mutated
-    - [reselect](https://github.com/reactjs/reselect) - Selector library for Redux
-    - [Redux Beacon](https://github.com/rangle/redux-beacon) - Analytics integration for Redux and ngrx/store
-- Development and production builds
-- Unit test setup with Jasmine and Karma
-- End-to-end test setup with Protractor
-- SASS processor
-- TSLint
-- And other goodies that come with [Angular-CLI](https://github.com/angular/angular-cli#generating-and-serving-an-angular2-project-via-a-development-server) (v1.0.0-beta.20-4)
-
 #### Installation
 *Prerequisite*: Please install Angular-CLI by following [these instructions](https://github.com/angular/angular-cli#installation).
 *Note*: Even though it's optional, we recommend you to use [yarn](https://yarnpkg.com/) instead of `npm install` for installing the dependencies.
-
-```bash
-git clone https://github.com/vmware/clarity-seed.git
-cd clarity-seed
 
 # install the project's dependencies
 yarn # or run "npm install"
