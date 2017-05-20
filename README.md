@@ -30,10 +30,10 @@ LIVE URL: layers.us.s3-website-us-west-2.amazonaws.com
 2. `npm install`
 
 ### server local
-1. `grunt`
+1. `ng serve`
 
 ### test
-1. `grunt test`
+1. `ng test`
 
 # cloud
 ### setup
