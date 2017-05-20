@@ -1,3 +1,4 @@
+import { LedgerModule } from './ledger/ledger.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,8 +21,9 @@ import { AuthModule } from './auth/auth.module';
         BrowserAnimationsModule,
         AppRoutingModule,
         ClarityModule.forRoot(),
-        CoreModule.forRoot(),
-        AuthModule.forRoot(environment.basicAuthConfig)
+        AuthModule.forRoot(environment.cognito),
+        LedgerModule.forRoot(),
+        CoreModule.forRoot()
     ],
     providers: [],
     bootstrap: [AppComponent]

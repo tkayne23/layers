@@ -1,0 +1,21 @@
+<ng-container *ngIf="(stats$ | async); let stats; else loading">
+  <div class="card-header">
+  {{userName$|async}}'s Portfolio
+  <span class="float-right strong">
+    Net Worth: {{stats.totalValue}}
+  </span>
+  </div>
+  <div class="card-block">
+    <canvas baseChart width="400" height="400"
+        [datasets]="stats.graphData"
+        [options]="lineChartOptions"
+        [legend]="lineChartLegend"
+        [chartType]="lineChartType"
+    ></canvas>
+  </div>
+</ng-container>
+<ng-template #loading>
+  <div class="d-flex align-items-center">
+    <span class="spinner"></span>
+  </div>
+</ng-template>

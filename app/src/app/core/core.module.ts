@@ -1,21 +1,26 @@
+import { RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { SharedModule } from 'app/shared/shared.module';
-import { CoreRoutingModule } from './core-routing.module';
-import { CoreStoreModule } from './core-store.module';
+import { CoreStoreModule } from './store';
 import { NavService } from './shared';
 
 import { HomePageComponent, AboutPageComponent } from './pages';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   imports: [
     SharedModule,
-    CoreRoutingModule,
-    CoreStoreModule
+    CoreStoreModule,
+    RouterModule
   ],
   declarations: [
     HomePageComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    SidebarComponent
+  ],
+  exports: [
+    SidebarComponent
   ]
 })
 export class CoreModule {

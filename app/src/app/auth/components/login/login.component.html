@@ -1,0 +1,49 @@
+<div class="login-wrapper">
+  <form #loginForm="ngForm" (ngSubmit)="onLogin()" class="login">
+      <label class="title">
+          Access your Layers Portfolio
+      </label>
+      <div class="login-group">
+          <label for="username">Username</label>
+          <label for="username"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)">
+                <input type="text" id="username" placeholder="Enter Username"
+                    required
+                    name="username"
+                    class="username"
+                    [(ngModel)]="details.username"
+                    #usernameInput="ngModel">
+                <span class="tooltip-content">
+                    A Username is Required.
+                </span>
+            </label>
+          <label for="password">password</label>
+          <label for="password"
+                aria-haspopup="true"
+                role="tooltip"
+                class="tooltip tooltip-validation tooltip-md"
+                [class.invalid]="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)">
+                <input type="password" id="password" placeholder="Enter password"
+                    required
+                    name="password"
+                    class="password"
+                    [(ngModel)]="details.password"
+                    #passwordInput="ngModel">
+                <span class="tooltip-content">
+                    A Password is Required.
+                </span>
+            </label>
+          <button [disabled]="loginForm.form.invalid" type="submit" class="btn btn-primary">
+              <span *ngIf="isLoading$ | async" class="spinner spinner-inline"></span>
+              Login
+            </button>
+            <div *ngIf="error$ | async; let error" class="error active">
+              Error {{error}}
+          </div>
+          <a routerLink="../signup" class="signup">Need to create an account?</a>
+      </div>
+  </form>
+</div>
