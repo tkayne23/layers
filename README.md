@@ -10,7 +10,7 @@ The backend runs on AWS Lambdas, meaning it can scale quickly and for very littl
 
 We used AWS Cognito to get a complete managed authentication system.
 
-Our ETL and database scripting took longer than expected. We built out a lot more than needed for the API, but were not able to connect all of our tables in the client API for this app build. We used our ETL process to do real work for the city of Greeley. Using data we created, we tested future analyses by hand to prove that we would be able to support a larger set of analytics in the future.
+Our analytics and data were actually used by real customers, icluding the city of Greeley. Unfortunately, we had to build out a lot more than needed for the app itself - leading to our ETL and database scripting taking longer than expected. We were not able to connect all of our tables to this app build. We know now what future analyses will look like and we have proven that we would be able to support our customers with a larger set of analytics in the future.
 
 LIVE URL: layers.us.s3-website-us-west-2.amazonaws.com
 
