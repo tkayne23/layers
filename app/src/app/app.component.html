@@ -1,12 +1,14 @@
 <clr-main-container>
-  <div class="content-container row">
-    <div class="col-2 p-0">
-      <lys-sidebar></lys-sidebar>
-    </div>
-    <div class="col-10">
-      <div class="card content-area">
-        <router-outlet></router-outlet>
+    <div class="row m-0">
+      <div class="col-2 p-0">
+        <lys-sidebar></lys-sidebar>
+      </div>
+      <div class="col-10 content-container">
+        <div class="content-area row justify-content-center">
+          <div class="col-md-8 col-sm-10">
+            <router-outlet></router-outlet>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </clr-main-container>

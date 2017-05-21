@@ -1,4 +1,4 @@
-import { MOCK_LEDGERS, MOCK_NEW_LEDGER } from './../shared/ledger.mock';
+import { MOCK_LEDGERS, MOCK_NEW_ASSET } from './../shared/ledger.mock';
 import { LedgerService } from './../shared/ledger.service';
 import { CoreState } from 'app/core/store';
 import 'rxjs/add/operator/catch';
@@ -21,13 +21,13 @@ export class LedgerEffects {
   @Effect()
   fetch$: Observable<Action> = this.actions$
     .ofType(LedgerActions.LEDGER_FETCH)
-    .map(() => Ledger.fetchSuccess(MOCK_LEDGERS));
+    .map(() => Ledger.fetchSuccess(MOCK_LEDGERS()));
 
   @Effect()
   create$: Observable<Action> = this.actions$
     .ofType(LedgerActions.LEDGER_CREATE)
     .map(toPayload)
-    .map(body => Ledger.createSuccess({ ...MOCK_NEW_LEDGER, ...body }));
+    .map(body => Ledger.createSuccess({ ...MOCK_NEW_ASSET, ...body }));
 
   @Effect()
   update$: Observable<Action> = this.actions$

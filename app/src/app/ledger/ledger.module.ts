@@ -1,4 +1,4 @@
-import { LedgerStoreModule } from './store/ledger-store.module';
+// import { LedgerStoreModule } from './store/ledger-store.module';
 import { LedgerService } from './shared/ledger.service';
 import { SharedModule } from './../shared/shared.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -9,7 +9,7 @@ import { LedgerComponent } from './components/ledger/ledger.component';
   imports: [
     SharedModule,
     ChartsModule,
-    LedgerStoreModule
+    // LedgerStoreModule
   ],
   declarations: [LedgerComponent]
 })

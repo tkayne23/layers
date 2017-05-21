@@ -14,7 +14,7 @@ import { Observable } from 'rxjs/Rx';
 export class SidebarComponent implements OnInit {
   auth$: Observable<AuthState>;
 
-  constructor(private nav: NavService, private store: Store<CoreState>, ) {
+  constructor(public nav: NavService, private store: Store<CoreState>, ) {
     this.auth$ = store.select('auth');
   }
 

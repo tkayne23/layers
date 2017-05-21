@@ -15,7 +15,6 @@ export const ROUTES: Routes = [
     },
     {path: 'auth', children: AuthRoutes},
     {path: 'ledger', children: LedgerRoutes},
-    ...CoreRoutes
 ];
 
 @NgModule({

@@ -1,9 +1,10 @@
 .main-container {
   animation: app-entrance 1s; 
 
-  // .content-area {
-  //   padding: 0;
-  // }
+  .content-area {
+    padding: 12px;
+    overflow-y: scroll;
+  }
 }
 
 @keyframes app-entrance {

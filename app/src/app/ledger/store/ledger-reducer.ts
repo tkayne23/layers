@@ -1,4 +1,5 @@
 import { Action, State } from '@ngrx/store';
-import { default as reduxCrud } from 'redux-crud';
+import * as reduxCrud from 'redux-crud';
 
-export const reducer = reduxCrud.Map.reducersFor('ledger');
+const reducers = reduxCrud.default.Map.reducersFor('ledger');
+export const reducer = (state, action) => reducers(state, action);

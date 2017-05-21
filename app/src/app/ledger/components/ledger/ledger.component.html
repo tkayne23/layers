@@ -1,21 +1,74 @@
-<ng-container *ngIf="(stats$ | async); let stats; else loading">
+<ul class="nav nav-pills page-tabs justify-content-right">
+  <li class="nav-item bg-grey"><a class="nav-link active" href="javascript://">Ledger</a></li>
+  <li class="nav-item bg-grey"><a class="nav-link" (click)="workbookModalOpen = true" href="javascript://">Workbook</a></li>
+</ul>
+<div class="card" *ngIf="(stats$ | async); let stats; else loading">
   <div class="card-header">
+  <span class="float-right">
+    <clr-icon shape="menu"></clr-icon>
+  </span>
   {{userName$|async}}'s Portfolio
-  <span class="float-right strong">
-    Net Worth: {{stats.totalValue}}
+  <span class="float-right">
+    Net Worth: ${{stats.totalValue  | number:'1.0-2'}} / NMA
   </span>
   </div>
-  <div class="card-block">
-    <canvas baseChart width="400" height="400"
-        [datasets]="stats.graphData"
-        [options]="lineChartOptions"
-        [legend]="lineChartLegend"
-        [chartType]="lineChartType"
-    ></canvas>
+  <div class="card-body">
+      <canvas baseChart width="600" height="200"
+          class="bg-primary"
+          [datasets]="stats.graphData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+          [labels]="lineChartLabels"
+          [chartType]="lineChartType"
+          [colors]="lineChartColors"
+      ></canvas>
+      <ul class="p-1 mb-3 nav nav-tabs nav-justified">
+        <li class="nav-item"><a class="nav-link active" href="javascript://">Production {{stats.avgValue | number:'1.0-2'}} avg.</a></li>
+        <li class="nav-item"><a class="nav-link" href="javascript://">Acreage {{stats.avgAcres | number:'1.0-2'}} avg.</a></li>
+        <li class="nav-item"><a class="nav-link" href="javascript://">Total NPV {{stats.totalValue | number:'1.0-2'}}</a></li>
+      </ul>
   </div>
-</ng-container>
+  <div class="card-body text-center">
+    <button class="btn btn-primary" (click)="createModalOpen = true">+ Add Property</button>
+  </div>
+  <clr-datagrid>
+      <clr-dg-column>Name</clr-dg-column>
+      <clr-dg-column>Last Updated</clr-dg-column>
+      <clr-dg-column>Net Acreage</clr-dg-column>
+      <clr-dg-column>Appraisal</clr-dg-column>
+
+      <clr-dg-row *ngFor="let asset of (ledger$ | async)">
+          <clr-dg-cell>{{asset.name}}</clr-dg-cell>
+          <clr-dg-cell>{{(asset.updatedAt || asset.createdAt) | date}}</clr-dg-cell>
+          <clr-dg-cell>{{asset.netAcreage}}</clr-dg-cell>
+          <clr-dg-cell>{{asset.appraisal}}</clr-dg-cell>
+      </clr-dg-row>
+
+      <clr-dg-footer>{{(ledger | async)?.length}} Assets</clr-dg-footer>
+  </clr-datagrid>
+</div>
 <ng-template #loading>
   <div class="d-flex align-items-center">
     <span class="spinner"></span>
   </div>
 </ng-template>
+<clr-modal [(clrModalOpen)]="createModalOpen">
+  <h3 class="modal-title">Guided Data Entry Coming Soon</h3>
+  <div class="modal-body">
+    <p>This should create a new property...</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="createModalOpen = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="createModalOpen = false">Ok</button>
+  </div>
+</clr-modal>
+<clr-modal [(clrModalOpen)]="workbookModalOpen">
+  <h3 class="modal-title">Professional Financial Tools</h3>
+  <div class="modal-body">
+    <p>We're working to add professional features to the ledger...</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="workbookModalOpen = false">Cancel</button>
+    <button type="button" class="btn btn-primary" (click)="workbookModalOpen = false">Ok</button>
+  </div>
+</clr-modal>
